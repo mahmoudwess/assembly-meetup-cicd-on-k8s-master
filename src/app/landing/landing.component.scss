@@ -1,0 +1,63 @@
+:host {
+  .call-end {
+    background: red;
+    mat-icon {
+      color: white;
+    }
+  }
+  .main-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #8ac8d5;
+    background-image:
+    radial-gradient(rgba(76,139,152,1), rgba(138,201,214,.05) 200px, transparent 400px),
+    radial-gradient(rgba(76,139,152,1), rgba(255,255,255,.1) 300px, transparent 400px),
+    radial-gradient(rgba(76,139,152,1), rgba(138,201,214,.1) 400px, transparent 400px);
+    background-size: 1000px 500px, 700px 500px, 700px 500px;
+    background-position: 0 -200px, 300px -100px, 700px -200px;    .local-video-wrapper {
+      border: solid white 2px;
+      border-radius: 1rem;
+      width: 15rem;
+      height: 15rem;
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      background: black;
+      .local-video-container {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        .controls {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 6rem;
+          bottom: 10px;
+          transform: translateX(-50%);
+          left: 50%;
+        }
+      }
+    }
+    .remote-video-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      .remote-video-container {
+        position: relative;
+        flex: 1 0 auto;
+        min-width: 50%;
+        border: solid white 2px;
+
+        .controls {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          bottom: 10px;
+          transform: translateX(-50%);
+          left: 50%;
+        }
+      }
+    }
+  }
+}

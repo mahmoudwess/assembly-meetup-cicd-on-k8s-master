@@ -1,0 +1,21 @@
+<div class="video-container" [ngClass]="{'local': src.local}">
+  <div class="video-wrapper">
+    <div class="controls" *ngIf="isOwner">
+      <button mat-mini-fab color="primary" (click)="stopCamera()">
+        <mat-icon *ngIf="!isLive">videocam_off</mat-icon>
+        <mat-icon *ngIf="isLive">videocam</mat-icon>
+      </button>
+      <button mat-mini-fab color="green" (click)="mute()">
+        <mat-icon *ngIf="isMute">mic_off</mat-icon>
+        <mat-icon *ngIf="!isMute">mic</mat-icon>
+      </button>
+      <button mat-mini-fab color="warn" (click)="close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <!-- <div class="name">
+            Aun
+        </div> -->
+    <video class="video-element" #video></video>
+  </div>
+</div>

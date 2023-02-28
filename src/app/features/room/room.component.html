@@ -1,0 +1,13 @@
+
+<div class="local-video-wrapper">
+    <app-video-component *ngIf="localStream|async as stream; else loading" class="localVideo"  [src]="{stream:stream, local: true}">
+    </app-video-component>
+</div>
+
+<div class="remote-streams-container">
+    <app-video-component *ngFor="let stream of remoteStreams" class="remoteVideo"  [src]="stream">
+    </app-video-component>
+</div>
+
+<ng-template #loading>Loading User Data...</ng-template>
+

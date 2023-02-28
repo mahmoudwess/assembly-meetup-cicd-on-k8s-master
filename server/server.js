@@ -1,0 +1,22 @@
+"use strict";
+exports.__esModule = true;
+var express = require("express");
+var http = require("http");
+var cors = require("cors");
+var app = express();
+var server;
+var port;
+server = http.createServer(app);
+port = process.env.port || 5000;
+var io = require("socket.io")(server);
+var roomsMap = {};
+var RoomService = require("./RoomService")(io, roomsMap);
+var cwd = process.cwd();
+io.sockets.on("connection", RoomService.listen);
+io.sockets.on("error", function (e) { return console.log(e); });
+app.use(cors());
+app.use(express.static(cwd + "/dist/ui"));
+app.get("*", function (req, res) {
+    res.sendFile(cwd + "/dist/ui/index.html");
+});
+server.listen(port, function () { return console.log("Server is running on port " + port); });

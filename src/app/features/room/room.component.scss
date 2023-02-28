@@ -1,0 +1,13 @@
+:host{
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: block;
+    .remote-streams-container{
+        display: flex;
+        flex-wrap: wrap;
+        .remoteVideo{
+            flex: 1 1 50%;
+        }
+    }
+}

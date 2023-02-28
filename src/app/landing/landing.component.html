@@ -1,0 +1,42 @@
+<div class="main-container">
+  <div class="local-video-wrapper">
+    <div class="local-video-container">
+      <div class="controls">
+        <button mat-icon-button>
+          <mat-icon *ngIf="micOn">mic_off</mat-icon>
+          <mat-icon *ngIf="!micOn">mic_off</mat-icon>
+        </button>
+        <button class="call-end" mat-icon-button>
+          <mat-icon>call_end</mat-icon>
+        </button>
+      </div>
+      <video class="localVideo" playsinline autoplay muted></video>
+    </div>
+  </div>
+  <div class="global-controls">
+    <!-- Mute All -->
+  </div>
+  <div class="remote-video-wrapper">
+    <div class="remote-video-container" *ngFor="let stream of streams">
+      <div class="controls">
+        <!-- Mute this stream -->
+        <button (click)="mute(stream)" mat-icon-button color="primary"
+          aria-label="Example icon-button with a heart icon">
+          <mat-icon *ngIf="stream.micOn">mic_off</mat-icon>
+          <mat-icon *ngIf="!stream.micOn">mic</mat-icon>
+        </button>
+        <button (click)="disableRemoteVideo(stream)" mat-icon-button color="primary"
+          aria-label="Example icon-button with a heart icon">
+          <mat-icon *ngIf="stream.video">videocam_off</mat-icon>
+          <mat-icon *ngIf="!stream.video">videocam</mat-icon>
+        </button>
+        <button class="call-end" (click)="hangUp(stream)">
+          <mat-icon>call_end</mat-icon>
+        </button>
+      </div>
+      <video [id]="stream.id" [src]="stream">
+      </video>
+    </div>
+
+  </div>
+</div>
